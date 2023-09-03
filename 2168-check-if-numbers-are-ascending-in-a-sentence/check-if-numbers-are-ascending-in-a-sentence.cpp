@@ -1,11 +1,12 @@
 class Solution {
 public:
     bool areNumbersAscending(string s) {
-        int num = 0;
+        
         int prev = -1;
         int n = s.size();
         for(int i = 0; i < n; i++){
             if(s[i] >= '0' && s[i] <= '9'){
+                int num = 0;
                 while(i < n && s[i] != ' '){
                     num = num*10 + s[i];
                     i++;
