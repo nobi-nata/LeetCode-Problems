@@ -1,6 +1,21 @@
 class Solution {
 public:
     string largestOddNumber(string num) {
+        int e = num.size()-1;
+        string ans = "";
+        while(e >= 0){
+            if((num[e]-'0')%2) break;
+            e--;
+        }
+        int i = 0;
+        while(i <= e){
+            ans += num[i];
+            i++;
+        }
+        return ans;
+    }
+};
+
         // deque<int> d;
         // string ans;
         // for(auto i : num){
@@ -18,18 +33,3 @@ public:
         //     d.pop_front();
         // }
         // return ans;
-
-        int e = num.size()-1;
-        string ans = "";
-        while(e >= 0){
-            if((num[e]-'0')%2) break;
-            e--;
-        }
-        int i = 0;
-        while(i <= e){
-            ans += num[i];
-            i++;
-        }
-        return ans;
-    }
-};
