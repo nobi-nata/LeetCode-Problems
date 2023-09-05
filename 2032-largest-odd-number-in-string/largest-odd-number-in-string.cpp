@@ -2,17 +2,11 @@ class Solution {
 public:
     string largestOddNumber(string num) {
         int e = num.size()-1;
-        string ans = "";
         while(e >= 0){
             if((num[e]-'0')%2) break;
             e--;
         }
-        int i = 0;
-        while(i <= e){
-            ans += num[i];
-            i++;
-        }
-        return ans;
+        return num.substr(0, e+1);
     }
 };
 
