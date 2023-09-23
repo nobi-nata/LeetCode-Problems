@@ -28,16 +28,28 @@ public:
         // }
         // return false;
 
-        int n = nums.size();
-        vector<int > res;
-        for(int i = 0 ; i < n ; i++) {
-            if(res.empty() || res.back() < nums[i])
-                res.push_back(nums[i]);
-            else {
-                auto it = lower_bound(res.begin(), res.end(), nums[i]);
-                *it = nums[i];
-            }
-            if(res.size() == 3)
+        // int n = nums.size();
+        // vector<int > res;
+        // for(int i = 0 ; i < n ; i++) {
+        //     if(res.empty() || res.back() < nums[i])
+        //         res.push_back(nums[i]);
+        //     else {
+        //         auto it = lower_bound(res.begin(), res.end(), nums[i]);
+        //         *it = nums[i];
+        //     }
+        //     if(res.size() == 3)
+        //         return true;
+        // }
+        // return false;
+
+        int a=INT_MIN,b=INT_MIN;
+        for(auto i:nums)
+        {
+            if(a==INT_MIN or i <= a)
+                a=i;
+            else if(b==INT_MIN or i <= b)
+                b=i;
+            else
                 return true;
         }
         return false;
