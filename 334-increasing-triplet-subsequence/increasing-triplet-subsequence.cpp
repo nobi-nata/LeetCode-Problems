@@ -11,23 +11,36 @@ public:
         // }
         // return false;
 
-        if(nums.size()<3)return false;
-        int left = INT_MAX;
-        int mid = INT_MAX;
-        for(int i=0;i<nums.size();i++)
-        {
-            if(nums[i] > mid) return true;
-            else if (nums[i] > left && nums[i] < mid)
-            {
-                mid = nums[i];
+        // if(nums.size()<3)return false;
+        // int left = INT_MAX;
+        // int mid = INT_MAX;
+        // for(int i=0;i<nums.size();i++)
+        // {
+        //     if(nums[i] > mid) return true;
+        //     else if (nums[i] > left && nums[i] < mid)
+        //     {
+        //         mid = nums[i];
+        //     }
+        //     else if(nums[i] < left )
+        //     {
+        //         left = nums[i];
+        //     }
+        // }
+        // return false;
+
+        int n = nums.size();
+        vector<int > res;
+        for(int i = 0 ; i < n ; i++) {
+            if(res.empty() || res.back() < nums[i])
+                res.push_back(nums[i]);
+            else {
+                auto it = lower_bound(res.begin(), res.end(), nums[i]);
+                *it = nums[i];
             }
-            else if(nums[i] < left )
-            {
-                left = nums[i];
-            }
+            if(res.size() == 3)
+                return true;
         }
         return false;
-
 
     }
 };
