@@ -27,10 +27,21 @@ public:
         // return result;
 
 
-        char result = 0;
-        for (char c : s + t) {
-            result ^= c;
-        }
-        return result;
+        // char result = 0;
+        // for (char c : s + t) {
+        //     result ^= c;
+        // }
+        // return result;
+
+
+
+         int a = 0;
+        int b = 0;
+        for (char c : s)
+            a += c;
+        for (char c : t)
+            b += c;
+            
+        return b - a; //extra letter ascii
     }
 };
