@@ -15,15 +15,22 @@ public:
         // return ' ';
 
 
+        // char result = 0;
+        // for (char c : s) {
+        //     result ^= c; 
+        // }
+        
+        // for (char c : t) {
+        //     result ^= c; 
+        // }
+        
+        // return result;
+
+
         char result = 0;
-        for (char c : s) {
-            result ^= c; 
+        for (char c : s + t) {
+            result ^= c;
         }
-        
-        for (char c : t) {
-            result ^= c; 
-        }
-        
         return result;
     }
 };
