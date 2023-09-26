@@ -24,7 +24,7 @@ public:
         vector<int> vis(numCourses, 0);
 
         for(int i = 0; i < numCourses; i++){
-            if(!vis[i] && adj[i].size()){
+            if(!vis[i]){
                 vector<int> pvis(numCourses, 0);
                 if(!dfs(adj, vis, i, pvis)) return false;
             }
