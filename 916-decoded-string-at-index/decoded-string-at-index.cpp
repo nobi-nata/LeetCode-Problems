@@ -20,7 +20,8 @@ public:
             } else {
                 if (k == 0 || k == length) {
                     // return std::string(1, s[j]);  // Convert char to std::string
-                    return string("")+s[j];
+                    // return string("")+s[j];
+                    return string(1, s[j]);
                 }
                 length--;
             }
