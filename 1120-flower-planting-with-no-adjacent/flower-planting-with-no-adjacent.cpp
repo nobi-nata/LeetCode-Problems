@@ -54,6 +54,7 @@ public:
                 if(ispossible(x,col,adj,color))
                 {
                     color[x]=col;
+                    break;
                 }
             }
              dfs(x,color,adj);
