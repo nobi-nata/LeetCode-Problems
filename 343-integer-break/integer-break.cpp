@@ -7,13 +7,24 @@ public:
         // if (remainder == 1) return pow(3, quotient - 1) * 4;
         // return pow(3, quotient) * 2;
 
-        vector<int> dp(n + 1, 0);
-        dp[1] = 1;
-        for (int i = 2; i <= n; ++i) {
-            for (int j = 1; j < i; ++j) {
-                dp[i] = max(dp[i], max(j * (i - j), j * dp[i - j]));
-            }
+        // vector<int> dp(n + 1, 0);
+        // dp[1] = 1;
+        // for (int i = 2; i <= n; ++i) {
+        //     for (int j = 1; j < i; ++j) {
+        //         dp[i] = max(dp[i], max(j * (i - j), j * dp[i - j]));
+        //     }
+        // }
+        // return dp[n];
+
+         if (n <= 3) {
+            return n - 1;
         }
-        return dp[n];
+        int result = 1;
+        while (n > 4) {
+            result *= 3;
+            n -= 3;
+        }
+        result *= n;
+        return result;
     }
 };
