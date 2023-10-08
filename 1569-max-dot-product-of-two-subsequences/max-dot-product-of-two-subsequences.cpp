@@ -1,7 +1,7 @@
 class Solution {
 public:
     int maxDotProduct(vector<int>& nums1, vector<int>& nums2) {
-         int n = nums1.size();
+        int n = nums1.size();
         int m = nums2.size();
         
         vector<vector<int>> dp(n + 1, vector<int>(m + 1, INT_MIN));
