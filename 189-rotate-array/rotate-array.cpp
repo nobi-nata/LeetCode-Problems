@@ -14,7 +14,7 @@ public:
         // }
         
         // using deque;
-        deque<int> dq;
+        list<int> dq;
 
         for(int i : nums) dq.push_back(i);
 
