@@ -14,21 +14,25 @@ public:
         // }
         
         // using deque;
-        deque<int> dq;
+        // deque<int> dq;
 
-        for(int i : nums) dq.push_back(i);
+        // for(int i : nums) dq.push_back(i);
 
-        while(k){
-            int ele = dq.back();
-            dq.pop_back();
-            dq.push_front(ele);
-            k--;
-        }
-        int j = 0;
-        for(auto i : dq){
-            nums[j++] = i;
-        }
+        // while(k){
+        //     int ele = dq.back();
+        //     dq.pop_back();
+        //     dq.push_front(ele);
+        //     k--;
+        // }
+        // int j = 0;
+        // for(auto i : dq){
+        //     nums[j++] = i;
+        // }
 
-
+        int n = nums.size();
+        k = k%n;
+        reverse(nums.begin(), nums.end());
+        reverse(nums.begin(), nums.begin()+k);
+        reverse(nums.begin()+k, nums.end());
     }
 };
