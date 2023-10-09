@@ -26,15 +26,15 @@ public:
         //TC: O(n)
 
         int n = nums.size();
-        int freq = 1;
-        int majority = nums[0];
-        for(int i = 1; i < n; i++){
-            if(nums[i] == majority) freq++;
-            else freq--;
+        int freq = 0;
+        int majority = -1;
+        for(int i = 0; i < n; i++){
             if(freq == 0){
                 freq = 1;
                 majority = nums[i];
             }
+            else if(nums[i] == majority) freq++;
+            else freq--;
         }
         return majority;
         
