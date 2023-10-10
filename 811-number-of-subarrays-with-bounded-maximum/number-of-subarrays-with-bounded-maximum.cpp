@@ -31,44 +31,45 @@ public:
 
         //TC: O(n) + SC: O(n) -- DP
 
-        int n = nums.size();
-        vector<int> dp(n, 0);
-        int j = 0;
-        for(int i = 0; i < n ; i++){
-            if(nums[i] >= left && nums[i] <= right){
-                dp[i] = i-j+1;
-            }
-            else if(nums[i] < left){
-                if(i > 0) dp[i] = dp[i-1];
-            }
-            else{
-                j = i+1;
-            }
-        }
-        int ans = 0;
-        for(int i : dp){
-            ans += i;
-        }
-        return ans;
-        //TC: O(n) -- DP
-        
         // int n = nums.size();
+        // vector<int> dp(n, 0);
         // int j = 0;
-        // int ans = 0;
-        // int prevc = 0;
-        // for(int i = 0; i < n; i++){
+        // for(int i = 0; i < n ; i++){
         //     if(nums[i] >= left && nums[i] <= right){
-        //         ans += (i-j+1);
-        //         prevc = (i-j+1);
+        //         dp[i] = i-j+1;
         //     }
         //     else if(nums[i] < left){
-        //         ans += prevc;
+        //         if(i > 0) dp[i] = dp[i-1];
         //     }
-        //     else{//nums[i] > right
+        //     else{
         //         j = i+1;
-        //         prevc = 0;
         //     }
         // }
+        // int ans = 0;
+        // for(int i : dp){
+        //     ans += i;
+        // }
         // return ans;
+
+        //TC: O(n) -- DP
+        
+        int n = nums.size();
+        int j = 0;
+        int ans = 0;
+        int prevc = 0;
+        for(int i = 0; i < n; i++){
+            if(nums[i] >= left && nums[i] <= right){
+                ans += (i-j+1);
+                prevc = (i-j+1);
+            }
+            else if(nums[i] < left){
+                ans += prevc;
+            }
+            else{//nums[i] > right
+                j = i+1;
+                prevc = 0;
+            }
+        }
+        return ans;
     }
 };
