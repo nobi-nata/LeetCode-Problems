@@ -2,7 +2,7 @@ class Solution {
 public:
     int nextGreaterElement(int n) {
         string num = to_string(n);
-        cout << num;
+        // cout << num;
         int firstdef = -1;
         for(int i = num.size()-2; i >= 0; i--){
             if(num[i] < num[i+1]){
@@ -10,9 +10,9 @@ public:
                 break;
             }
         }
-        cout << firstdef;
+        // cout << firstdef;
         if(firstdef == -1) return -1;
-        cout << num[firstdef];
+        // cout << num[firstdef];
         int nextLarge = -1;
         int nextMax = INT_MAX;
         for(int i = firstdef+1; i < num.size(); i++){
@@ -28,6 +28,6 @@ public:
         long ans = stol(num);
 
         if(ans > INT_MAX) return -1;
-        return (int)ans;
+        return ans;
     }
 };
