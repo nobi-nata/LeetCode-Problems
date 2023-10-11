@@ -1,16 +1,16 @@
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
+        //TC: O(n^2)
+
         int n = nums.size();
-        for(int i = 0; i < n; i++){
+        for(int i = 0; i < n ; i++){
             for(int j = i+1; j < n; j++){
-                int k = (target - nums[i]);
-                if( k == nums[j]){
-                    return {i , j};
-                    // cout << 'hi';
+                if(nums[i]+nums[j] == target){
+                    return {i, j};
                 }
             }
         }
-        return {0,0};
+        return {0, 0};
     }
 };
