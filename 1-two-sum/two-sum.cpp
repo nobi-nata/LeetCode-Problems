@@ -15,22 +15,35 @@ public:
 
         //TC: O(nlogn) + SC: O(n)
 
-        int n = nums.size();
-        unordered_map<int,vector<int>> mp;
-        for(int i = 0; i < n; i++){
-            mp[nums[i]].push_back(i);
-        }
-        sort(nums.begin(), nums.end());
-        int i = 0;
-        int j = n-1;
+        // int n = nums.size();
+        // unordered_map<int,vector<int>> mp;
+        // for(int i = 0; i < n; i++){
+        //     mp[nums[i]].push_back(i);
+        // }
+        // sort(nums.begin(), nums.end());
+        // int i = 0;
+        // int j = n-1;
 
-        while(i < j){
-            if(nums[i] + nums[j] == target){
-                if(nums[i] == nums[j]) return {mp[nums[i]][0], mp[nums[j]][1]};
-                else return {mp[nums[i]][0], mp[nums[j]][0]};
+        // while(i < j){
+        //     if(nums[i] + nums[j] == target){
+        //         if(nums[i] == nums[j]) return {mp[nums[i]][0], mp[nums[j]][1]};
+        //         else return {mp[nums[i]][0], mp[nums[j]][0]};
+        //     }
+        //     else if(nums[i] + nums[j] > target) j--;
+        //     else i++;
+        // }
+        // return {0,0};
+
+        //TC: O(n) + SC: O(n)
+
+        int n = nums.size();
+        unordered_map<int, int> mp;
+
+        for(int i = 0; i < n; i++){
+            if(mp.find(target - nums[i]) != mp.end()){
+                return {mp[target - nums[i]], i};
             }
-            else if(nums[i] + nums[j] > target) j--;
-            else i++;
+            mp[nums[i]] = i;
         }
         return {0,0};
     }
