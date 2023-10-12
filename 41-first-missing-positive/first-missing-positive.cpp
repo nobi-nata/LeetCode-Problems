@@ -37,28 +37,56 @@ public:
         // }
         // return i;
         
-        
-        int n = nums.size();
-        int i = 0;
-        while(i < n){
-            if(nums[i] == (i+1) || nums[i] <= 0 || nums[i] > n){
-                i++;
-                continue;
-            }
+        //TC: O(n)
+
+        // int n = nums.size();
+        // int i = 0;
+        // while(i < n){
+        //     if(nums[i] == (i+1) || nums[i] <= 0 || nums[i] > n){
+        //         i++;
+        //         continue;
+        //     }
             
-            int idx1 = i;
-            int idx2 = nums[i] - 1;
-            if(nums[idx1] == nums[idx2]){
-                i++;
-                continue;
-            }
-            swap(nums[idx1],nums[idx2]);
-        }
+        //     int idx1 = i;
+        //     int idx2 = nums[i] - 1;
+        //     if(nums[idx1] == nums[idx2]){
+        //         i++;
+        //         continue;
+        //     }
+        //     swap(nums[idx1],nums[idx2]);
+        // }
+        // for(int i = 0; i < n; i++){
+        //     if(nums[i] != i+1){
+        //         return i+1;
+        //     }
+        // }
+        // return n+1;
+
+        //TC: O(n)
+
+        int n = nums.size();
+        int contains = 0;
         for(int i = 0; i < n; i++){
-            if(nums[i] != i+1){
-                return i+1;
+            if(nums[i] == 1) contains++;
+            if(nums[i] <= 0 || nums[i] > n){ 
+                nums[i] = 1;
             }
         }
+        if(contains == 0) return 1;
+
+        for(int i = 0; i < n; i++){
+            int a = abs(nums[i]);
+            if(a == n){
+                nums[0] = -abs(nums[0]);
+            }
+            else nums[a] = -abs(nums[a]);
+        }
+
+        for(int i = 1; i < n; i++){
+            if(nums[i] > 0)
+                return i;
+        }
+        if(nums[0] > 0) return n;
         return n+1;
     }
 };
