@@ -31,12 +31,12 @@ public:
 
 
 
-        long long bitmask = 0;
+        long  bitmask = 0;
         for(int i : nums){
             bitmask ^= i;
         }
 
-        long long diff = bitmask & (-bitmask);
+        long  diff = bitmask & (-bitmask);
 
         int x = 0, y = 0;
         for(int i : nums){
