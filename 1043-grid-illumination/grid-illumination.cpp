@@ -1,51 +1,50 @@
 class Solution {
 public:
     vector<int> gridIllumination(int n, vector<vector<int>>& lamps, vector<vector<int>>& queries) {
-        unordered_map<long,long> mp1;
-        unordered_map<long,long> mp2;
-        unordered_map<long,long> mp3;
-        unordered_map<long,long> mp4;
-        unordered_map<long,long> mp5;
+        unordered_map<int,int> x;
+        unordered_map<int,int> y;
+        unordered_map<int,int> p_diag;
+        unordered_map<int,int> s_diag;
+        set<pair<int, int>> lamp;
 
-        for(int i = 0; i < lamps.size(); i++){
-            int x = lamps[i][0];
-            int y = lamps[i][1];
-            long val = (long)x*n+y;
-            mp1[x]++;
-            mp2[y]++;
-            mp3[x-y]++;
-            mp4[x+y]++;
-            mp5[val]++;
+        vector<int> ans;
+
+        if(n == 0) return ans;
+
+        for(auto l : lamps){
+            if(lamp.find({l[0], l[1]}) == lamp.end()){
+                x[l[0]]++;
+                y[l[1]]++;
+                p_diag[l[0]+l[1]]++;
+                s_diag[l[0]-l[1]]++;
+                lamp.insert({l[0], l[1]});
+            }
         }
 
-        vector<int> ans(queries.size(), 0);
-        int dirs[][2]  = {{1,0},{1, -1},{0,-1},{-1,-1},{-1,0},{-1,1},{0,1},{1,1},{0,0}};
+        
 
-        for(int i = 0; i < queries.size(); i++){
-            int x = queries[i][0];
-            int y = queries[i][1];
-            
+        for(auto q : queries){
+            if(x[q[0]] > 0 || y[q[1]] > 0 || p_diag[q[0]+q[1]] > 0 || s_diag[q[0]-q[1]] > 0){
+                ans.push_back(1);
 
-            if(mp1[x] > 0 || mp2[y] > 0 || mp3[x-y] > 0 || mp4[x+y] > 0){
-                ans[i] = 1;
-            }
-            else ans[i] = 0;
+                for(int i = -1; i <= 1; i++){
+                    for(int j = -1; j <= 1; j++){
+                        int qx = q[0] + i;
+                        int qy = q[1] + j;
 
+                        if(qx >= 0 && qx < n && qy >= 0 && qy < n && lamp.count({qx, qy})){
+                            x[qx]--;
+                            y[qy]--;
+                            p_diag[qx+qy]--;
+                            s_diag[qx-qy]--;
 
-            for(auto dir : dirs){
-                int x1 = x + dir[0];
-                int y1 = y + dir[1];
-                long val = (long)x1*n+y1;
-                if(x1>=0 && y1>=0 && x1< n && y1<n && mp5.find(val) != mp5.end()){
-                    int time = mp5[val];
-
-                    if(mp1[x1] > 0) mp1[x1]=mp1[x1]-time;
-                    if(mp2[y1] > 0) mp2[y1]=mp2[y1]-time;
-                    if(mp3[x1-y1] > 0) mp3[x1-y1]=mp3[x1-y1]-time;
-                    if(mp4[x1+y1] > 0) mp4[x1+y1]=mp4[x1+y1]-time;
-                    mp5.erase(x1*n+y1);
+                            lamp.erase({qx, qy});
+                        }
+                    }
                 }
-
+            }
+            else{
+                ans.push_back(0);
             }
         }
         return ans;
