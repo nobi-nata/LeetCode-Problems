@@ -29,5 +29,22 @@ public:
         if(quo > INT_MAX) return INT_MAX;
 
         return (int)quo;
+
+
+
+        // unsigned int ans = 0;
+        // if(dividend == INT_MIN && divisor == -1) return INT_MAX;
+        // bool flag = (dividend >= 0) == (divisor >= 0) ? true : false;
+
+        // unsigned int divid = abs(dividend);
+        // unsigned int divis = abs(divisor);
+
+        // while(divid >= divis){
+        //     ans++;
+        //     divid -= divis;
+        // }
+
+        // return flag ? ans : -ans;
+
     }
 };
