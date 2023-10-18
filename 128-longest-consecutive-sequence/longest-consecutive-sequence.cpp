@@ -69,9 +69,8 @@ public:
         int ans = 1;
         int cnt = 1;
         for(int i = 1; i < nums.size(); i++){
-            int flag = 0;
-            while(i < nums.size() && nums[i] == nums[i-1]){ i++; flag = 1;}
-            // if(flag) i--;
+            while(i < nums.size() && nums[i] == nums[i-1]) i++;
+
             if(i < nums.size() && nums[i] == nums[i-1]+1){
                 cnt++;
             }
