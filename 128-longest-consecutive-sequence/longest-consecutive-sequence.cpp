@@ -44,23 +44,41 @@ public:
         // return ans;
 
 
-        unordered_map<int, int> mp;
-        int n = nums.size();
-        int ans = 0;
+        // unordered_map<int, int> mp;
+        // int n = nums.size();
+        // int ans = 0;
 
-        for(int i : nums){
-            mp[i]++;
-        }
-        for(int i = 0; i < n; i++){
-            if(mp.find(nums[i] - 1) == mp.end()){
-                int len = 1;
-                int num = nums[i]+1;
-                while(mp.find(num) != mp.end()){
-                    len++;
-                    num++;
-                }
-                ans = max(ans, len);
+        // for(int i : nums){
+        //     mp[i]++;
+        // }
+        // for(int i = 0; i < n; i++){
+        //     if(mp.find(nums[i] - 1) == mp.end()){
+        //         int len = 1;
+        //         int num = nums[i]+1;
+        //         while(mp.find(num) != mp.end()){
+        //             len++;
+        //             num++;
+        //         }
+        //         ans = max(ans, len);
+        //     }
+        // }
+        // return ans;
+
+        sort(nums.begin(), nums.end());
+        if(nums.size() == 0) return 0;
+        int ans = 1;
+        int cnt = 1;
+        for(int i = 1; i < nums.size(); i++){
+            int flag = 0;
+            while(i < nums.size() && nums[i] == nums[i-1]){ i++; flag = 1;}
+            // if(flag) i--;
+            if(i < nums.size() && nums[i] == nums[i-1]+1){
+                cnt++;
             }
+            else{
+                cnt = 1;
+            }
+            ans = max(ans, cnt);
         }
         return ans;
     }
