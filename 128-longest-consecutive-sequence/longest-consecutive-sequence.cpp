@@ -19,28 +19,49 @@ public:
         // }
         // return ans;
 
-        int n = nums.size();
-        set<int> st;
-        for(int i : nums){
-            st.insert(i);
-        }
-        vector<int> num;
-        for(auto i : st){
-            num.push_back(i);
-        }
+        // int n = nums.size();
+        // set<int> st;
+        // for(int i : nums){
+        //     st.insert(i);
+        // }
+        // vector<int> num;
+        // for(auto i : st){
+        //     num.push_back(i);
+        // }
 
+        // int ans = 0;
+        // if(n == 0) return 0;
+        // int cnt = 1;
+        // for(int i = 1; i < num.size(); i++){
+        //     if(num[i] == num[i-1]+1) cnt++;
+        //     else{
+        //         ans = max(ans, cnt);
+        //         cnt = 1;
+        //     }
+        //     cout << cnt << " "; 
+        // }
+        // ans = max(ans, cnt);
+        // return ans;
+
+
+        unordered_map<int, int> mp;
+        int n = nums.size();
         int ans = 0;
-        if(n == 0) return 0;
-        int cnt = 1;
-        for(int i = 1; i < num.size(); i++){
-            if(num[i] == num[i-1]+1) cnt++;
-            else{
-                ans = max(ans, cnt);
-                cnt = 1;
-            }
-            cout << cnt << " "; 
+
+        for(int i : nums){
+            mp[i]++;
         }
-        ans = max(ans, cnt);
+        for(int i = 0; i < n; i++){
+            if(mp.find(nums[i] - 1) == mp.end()){
+                int len = 1;
+                int num = nums[i]+1;
+                while(mp.find(num) != mp.end()){
+                    len++;
+                    num++;
+                }
+                ans = max(ans, len);
+            }
+        }
         return ans;
     }
 };
