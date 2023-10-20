@@ -10,7 +10,7 @@ public:
             if(pq.size() < k){
                 pq.push(nums[i]);
             }
-            else if(nums[i] >= pq.top()){
+            else if(nums[i] > pq.top()){
                 pq.pop();
                 pq.push(nums[i]);
             }
