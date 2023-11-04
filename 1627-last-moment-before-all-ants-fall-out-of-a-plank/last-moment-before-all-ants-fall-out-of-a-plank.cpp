@@ -1,18 +1,20 @@
 class Solution {
 public:
     int getLastMoment(int n, vector<int>& left, vector<int>& right) {
-        sort(left.begin(), left.end());
-        sort(right.begin(), right.end());
+        // sort(left.begin(), left.end());
+        // sort(right.begin(), right.end());
+        int lm = 0;
+        int rm = n;
+        for(int i : right) rm = min(rm, i);
+        for(int i : left) lm = max(lm, i);
         if(left.size() == 0){
-            // if(right[0] == 0 && right.size() == 1) return 0;
-            return n - right[0];
+            return n - rm;
         }
         if(right.size() == 0){
-            // if(left[left.size()-1] == n && left.size() == 1) return 0;
-            return left[left.size()-1];
+            return lm;
         }
 
-        int ans = max(left[left.size()-1], n - right[0]);
+        int ans = max(lm, n - rm);
 
         return ans;
     }
