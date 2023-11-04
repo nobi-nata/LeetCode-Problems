@@ -7,15 +7,14 @@ public:
         int rm = n;
         for(int i : right) rm = min(rm, i);
         for(int i : left) lm = max(lm, i);
-        if(left.size() == 0){
-            return n - rm;
-        }
-        if(right.size() == 0){
-            return lm;
-        }
+        // if(left.size() == 0){
+        //     return n - rm;
+        // }
+        // if(right.size() == 0){
+        //     return lm;
+        // }
 
-        int ans = max(lm, n - rm);
+        return max(lm, n - rm);
 
-        return ans;
     }
 };
