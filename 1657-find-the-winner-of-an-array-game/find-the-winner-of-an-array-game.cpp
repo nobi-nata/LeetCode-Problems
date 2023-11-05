@@ -17,12 +17,12 @@ public:
         // return arr[0];
 
 
-         if (k == 1) {
-            return std::max(arr[0], arr[1]);
-        }
-        if (k >= arr.size()) {
-            return *std::max_element(arr.begin(), arr.end());
-        }
+        //  if (k == 1) {
+        //     return std::max(arr[0], arr[1]);
+        // }
+        // if (k >= arr.size()) {
+        //     return *std::max_element(arr.begin(), arr.end());
+        // }
 
         int current_winner = arr[0];
         int consecutive_wins = 0;
